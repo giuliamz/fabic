@@ -1,1 +1,3 @@
-# fabic
+# Stimuli, data and presentation and analyses scripts for the research article: ""
+## By Giulia Mazzi, Ambra Ferrari ...
+
