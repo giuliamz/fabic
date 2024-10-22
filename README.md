@@ -2,11 +2,11 @@
 ## By Giulia Mazzi, Ambra Ferrari ...
 
 # Description
-## Data
+### Data
 The folder 'data' includes two folders, one for each experiment, with the data for all subjects included in the two experiments.
 
-## Stimuli
+### Stimuli
 
-## Scripts
+### Scripts
 The folder 'scripts' includes all the necessary scripts for stimuli presentation and analyses, including a README file with scripts descriptions and guides.
 
