@@ -14,3 +14,11 @@ The folder 'scripts' includes all the necessary scripts for stimuli presentation
 The code is written in MATLAB, tested for the experiment presentation with version 2021b, for the analyses with version 2023b.
 
 1. [SPM](https://www.fil.ion.ucl.ac.uk/spm/)
+2. [MathWorks File Exchange Functions](https://uk.mathworks.com/matlabcentral/fileexchange/?s_tid=gn_mlc_fx)
+   * consolidator
+   * fminsearchbnd
+   * jheapcl
+   * parfor_progress
+
+  # Contributions
+  The code was mainly written by Giulia Mazzi, Ambra Ferrari 
