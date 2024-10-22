@@ -1,4 +1,4 @@
-# Stimuli, data and presentation and analyses scripts for the research article: "Prior expectations guide multisensory integration during face-to-face communication"
+# Source materials for the research article: "Prior expectations guide multisensory integration during face-to-face communication"
 ## By Giulia Mazzi, Ambra Ferrari ...
 
 ## Description
