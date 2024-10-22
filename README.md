@@ -2,6 +2,8 @@
 ## By Giulia Mazzi, Ambra Ferrari ...
 
 # Description
+This repository containes all material, data and scripts necessary to replicate the results in the research article "..."
+
 ### Data
 The folder 'data' includes two folders, one for each experiment, with the data for all subjects included in the two experiments.
 
