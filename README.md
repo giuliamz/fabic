@@ -1,8 +1,8 @@
-# Stimuli, data and presentation and analyses scripts for the research article: ""
+# Stimuli, data and presentation and analyses scripts for the research article: "Prior expectations guide multisensory integration during face-to-face communication"
 ## By Giulia Mazzi, Ambra Ferrari ...
 
 # Description
-This repository contains all material, data and scripts necessary to replicate the results in the research article "..."
+This repository contains all material, data and scripts necessary to replicate the results in the research article "Prior expectations guide multisensory integration during face-to-face communication"
 
 ### Data
 The folder 'data' includes two folders, one for each experiment, with the data for all subjects included in the two experiments.
