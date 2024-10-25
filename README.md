@@ -23,4 +23,4 @@ The code is written in MATLAB, tested for the experiment presentation with versi
    * parfor_progress
 
 ## Contributors
-The code was written by Giulia Mazzi, Ambra Ferrari 
+The code was written by Giulia Mazzi, Ambra Ferrari. The Bayesian Causal Inference fitting code was originally developed by Ulrik Beierholm, Tim Rohe and Máté Aller.
