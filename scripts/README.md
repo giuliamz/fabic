@@ -10,12 +10,12 @@ For model-free analyses:
 * WAV_per_test_fabic : script to perform permutation testing on the audiovisual weight index
 
 For model-based analyses:
-* exp1_run_model_pool/exp2_run_model_pool : script to run model estimation for BCI pooled and FF pooled
+* exp1_run_model_pool, exp2_run_model_pool : script to run model estimation for BCI pooled and FF pooled
   - dependencies: BCI/bci_fit_model and BCI/fitModelFus
-* exp1_run_model_sep/exp2_run_model_sep : script to run model estimation for BCI separated and FF separated
+* exp1_run_model_sep, exp2_run_model_sep : script to run model estimation for BCI separated and FF separated
   - dependencies: BCI/bci_fit_model and BCI/fitModelFus
-* exp1_model_comparison/exp2_model_comparison: script to run model comparison in the 2 (BCI vs FF model) x 2 (communicative vs non-communicative action) model space
-* exp1_coefficient_determination/exp2_coefficient_determination : script to compute the coefficient of determination (R^2)
+* exp1_model_comparison, exp2_model_comparison: script to run model comparison in the 2 (BCI vs FF model) x 2 (communicative vs non-communicative action) model space
+* exp1_coefficient_determination, exp2_coefficient_determination : script to compute the coefficient of determination (R^2)
   - dependencies: BCI/fitModelNull
 
 Scripts are listed in order of execution.
