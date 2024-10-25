@@ -19,6 +19,7 @@ The code is written in MATLAB, tested for the experiment presentation with versi
    * fminsearchbnd
    * jheapcl
    * parfor_progress
+3. EyeLink® 1000, version 4.594, SR Research Ltd
 
 ## Contributors
 The code was written by Giulia Mazzi, Ambra Ferrari. The Bayesian Causal Inference fitting code was originally developed by Ulrik Beierholm, Tim Rohe and Máté Aller.
