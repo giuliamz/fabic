@@ -3,6 +3,7 @@
 
 ## Description
 This repository contains all material, data and scripts necessary to replicate the results in the research article "Prior expectations guide multisensory integration during face-to-face communication"
+The stimuli used in the experiment are available on the Open Science Framework: https://osf.io/596wt/
 
 ### Data
 The folder 'data' includes two folders, one for each experiment, with the data for all subjects included in the two experiments.
