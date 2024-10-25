@@ -19,3 +19,4 @@ For model-based analyses:
   - dependencies: BCI/fitModelNull
 
 Scripts are listed in order of execution.
+Analysis of response times was performed on JASP using participants median response times per condition ('rt_experiment1.csv' and 'rt_experiment2.csv' in the data folder).
