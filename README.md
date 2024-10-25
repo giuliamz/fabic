@@ -7,8 +7,6 @@ This repository contains all material, data and scripts necessary to replicate t
 ### Data
 The folder 'data' includes two folders, one for each experiment, with the data for all subjects included in the two experiments.
 
-### Stimuli
-
 ### Scripts
 The folder 'scripts' includes all the necessary scripts for stimuli presentation and analyses, including a README file with scripts descriptions and guides.
 
