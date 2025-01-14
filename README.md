@@ -1,5 +1,5 @@
 # Source materials for the research article: "Prior expectations guide multisensory integration during face-to-face communication"
-## By Giulia Mazzi, Ambra Ferrari ...
+## By Giulia Mazzi, Ambra Ferrari, Maria Laura Mencaroni, Chiara Valzolgher, Mirko Tommasini, Francesco Pavani and Stefania Benetti
 
 ## Description
 This repository contains all material, data and scripts necessary to replicate the results in the research article "Prior expectations guide multisensory integration during face-to-face communication".
