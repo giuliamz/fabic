@@ -18,6 +18,9 @@ For model-based analyses:
 * exp1_model_comparison, exp2_model_comparison: script to run model comparison in the 2 (BCI vs FF model) x 2 (communicative vs non-communicative action) model space
 * exp1_coefficient_determination, exp2_coefficient_determination : script to compute the coefficient of determination (R^2)
   - dependencies: BCI/fitModelNull
+* exp1_parameters_perm_testing, exp1_parameters_perm_testing : permutation testing of winning model parameters
+* correlation_WAV_parameters : Correlation analysis between WAV and parameters winning model
+* WAV_pred_BCI : Compute WAV based on predictions of winning model (BCI Separated)
 
 Scripts are listed in order of execution.
 
