@@ -1,6 +1,9 @@
 %% Experiment 1: model comparison
 % 2 (BCI vs FF model) x 2 (communicative vs non-communicative action) model space
 
+% Note: the analysis presupposes that SPM12 is in the MATLAB path
+% Download SPM12 from: https://www.fil.ion.ucl.ac.uk/spm/software/spm12
+
 clear;
 close all;
 clc;
@@ -83,12 +86,17 @@ param_group_m3(2,:)=std(param_m3)/sqrt(nsubj);
 param_group_m4(1,:)=mean(param_m4);
 param_group_m4(2,:)=std(param_m4)/sqrt(nsubj);
 
-% Pair-wise comparison communicative vs non-communicative
-% winning model: m2
-[pcommon.h,pcommon.p,pcommon.ci,pcommon.stats]=ttest(param_m2(:,1),param_m2(:,5));
-[sigmaP.h,sigmaP.p,sigmaP.ci,sigmaP.stats]=ttest(param_m2(:,2),param_m2(:,6));
-[sigmaA.h,sigmaA.p,sigmaA.ci,sigmaA.stats]=ttest(param_m2(:,3),param_m2(:,7));
-[sigmaV.h,sigmaV.p,sigmaV.ci,sigmaV.stats]=ttest(param_m2(:,4),param_m2(:,8));
+% Prepare data for JASP analysis
+conditionNames = {'pCcom','sigPcom','sigAcom','sigVcom','pCncom','sigPncom','sigAncom','sigVncom'};
+T = array2table(param_m2, 'VariableNames', conditionNames);
+writetable(T,fullfile(savePath,'params_winning_model_m2_avert_nosac.csv'));
+
+% Compute difference Com - NCom for pcommon, sigmaA and sigmaV
+pcommon_diff_Com_NCom_exp1=param_m2(:,1)-param_m2(:,5);
+sigmaA_diff_Com_NCom_exp1=param_m2(:,3)-param_m2(:,7);
+sigmaV_diff_Com_NCom_exp1=param_m2(:,4)-param_m2(:,8);
+save(fullfile(savePath,"params_diff_Com_NCom_exp1"),"pcommon_diff_Com_NCom_exp1",...
+    "sigmaA_diff_Com_NCom_exp1","sigmaV_diff_Com_NCom_exp1");
 
 %% Plot group results
 
@@ -153,8 +161,7 @@ for c = 1:col
                     plot_matrix_mean(i)-plot_matrix_sem(i)],...
                     'Color',[0 0 0],'LineWidth',1.2)
             end
-    end
-    
+    end    
     % set x and y axes and ticks
     xl = [0.3 2.7]; xlim(xl);
     if c == 1
