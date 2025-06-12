@@ -7,6 +7,7 @@ For experiment presentation:
 For model-free analyses:
 * audloc_regress_fabic : script to analyse the results of the auditory localiser (RMSE)
 * WAV_rep_fabic : script to compute the average audiovisual weight index
+* WAV_rep_subj_spli : script to compute the average audiovisual weight index using participant-specific and condition-specific responses as scale factor (See supplementary materials)
 * WAV_per_test_fabic : script to perform permutation testing on the audiovisual weight index
 
 For model-based analyses:
