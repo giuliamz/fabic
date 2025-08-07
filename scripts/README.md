@@ -22,6 +22,11 @@ For model-based analyses:
 * exp1_parameters_perm_testing, exp2_parameters_perm_testing : permutation testing of winning model parameters
 * correlation_WAV_parameters : Correlation analysis between WAV and parameters winning model
 * WAV_predicted : Compute WAV based on predictions of BCI and FC models (separated)
+* correlation_params_bci_fixcrit : Correlation analysis pcommon and criterion parameters
+
+Model-free vs Model-based:
+* proportion_responses : Compute proportions of participants' responses and model predictions
+* correlation_WAV_params : Correlation analysis WAV and BCI/FC model parameters 
 
 Scripts are listed in order of execution.
 
