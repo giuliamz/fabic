@@ -15,12 +15,13 @@ For model-based analyses:
   - dependencies: BCI/bci_fit_model.m, BCI/fitModelFus.m, BCI/fixCrit_fitmodel.m and BCI/stoFus_fitmodel.m
 * exp1_run_model_sep, exp2_run_model_sep : script to run model estimation for BCI separated, FF separated, FC separated and SF separated
   - dependencies: BCI/bci_fit_model.m, BCI/fitModelFus.m, BCI/fixCrit_fitmodel.m and BCI/stoFus_fitmodel.m
-* exp1_model_comparison, exp2_model_comparison: script to run model comparison in the 2 (BCI vs FF model) x 2 (communicative vs non-communicative action) model space
-* exp1_coefficient_determination, exp2_coefficient_determination : script to compute the coefficient of determination (R^2)
+* exp1_model_comparison, exp2_model_comparison: script to run model comparison in the 2 (BCI vs FF model) x 2 (pooled vs separated) model space
+* exp1_model_comparison_8mod, exp2_model_comparison_8mod : script to run model comparison in the 4 (BCI vs FF vs FC vs SF model) x 2 (pooled vs separated) model space
+* exp1_coefficient_determination, exp2_coefficient_determination, exp1_coefficient_determination_8mod, exp2_coefficient_determination_8mod : script to compute the coefficient of determination (R^2)
   - dependencies: BCI/fitModelNull
-* exp1_parameters_perm_testing, exp1_parameters_perm_testing : permutation testing of winning model parameters
+* exp1_parameters_perm_testing, exp2_parameters_perm_testing : permutation testing of winning model parameters
 * correlation_WAV_parameters : Correlation analysis between WAV and parameters winning model
-* WAV_pred_BCI : Compute WAV based on predictions of winning model (BCI Separated)
+* WAV_predicted : Compute WAV based on predictions of BCI and FC models (separated)
 
 Scripts are listed in order of execution.
 
