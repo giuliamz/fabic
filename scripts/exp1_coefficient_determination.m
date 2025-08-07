@@ -1,4 +1,5 @@
 %% Experiment 1: compute coefficient of determination (R^2)
+% (BCI vs FF) x (Pooled vs Separated)
 
 clear;
 close all;

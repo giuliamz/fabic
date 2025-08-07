@@ -1,6 +1,8 @@
-%% Experiment 2 models estimation: 
-% Forced Fusion Separated
+%% Experiment 2 models estimation:
 % Bayesian Causal Inference Separated
+% Fixed Criterion Separated
+% Stochastic Fusion Separated
+% Forced Fusion Separated
 
 %% Preparations
 clc;
@@ -45,11 +47,11 @@ subjID = {'70';'71';'72';'73';'75';'76';'77';'78';'79';'80';'81';...
     '83';'84';'85';'86';'87';'88';'89';'93';'94';'95';'98';'99';'101';...
     '102';'103';'104';'106';'107';'111';'112';'113';'114';'115'};
 % Model
-model='bci'; % bci fus
+model='stofus'; % bci fus fixcrit stofus
 % Number of minima to evaluate with fminsearch
 nmin = 10;
 % Max sigP
-msigP=30;
+msigP = 30;
 
 %% Run modeling for each subject
 
@@ -103,8 +105,14 @@ for iSubj = 1:length(subjID)
     % Parameter settings
     if strcmp(model, 'fus')
         p_common=1;
+    elseif strcmp(model, 'stofus')
+        p_common=1;
+        pFus=linspace(0.1,0.9,n);
     elseif strcmp(model, 'segA') || strcmp(model, 'segV') || strcmp(model, 'taskRel')
         p_common=0;
+    elseif strcmp(model, 'fixcrit')
+        p_common=0;
+        fixcrit=linspace(0.1,30,n);    
     else
         p_common=linspace(0.1,0.9,n);
     end
@@ -119,12 +127,18 @@ for iSubj = 1:length(subjID)
     if strcmp(model, 'fus') || strcmp(model, 'taskRel')
         parameterNames = {'sigP','sigA','sigV'};
         gridVectors = {sigP,sigA,sigV};
+    elseif strcmp(model, 'stofus')
+        parameterNames = {'pFus','sigP','sigA','sigV'};
+        gridVectors = {pFus,sigP,sigA,sigV};
     elseif strcmp(model, 'segA')
         parameterNames = {'sigP','sigA'};
         gridVectors = {sigP,sigA};
     elseif strcmp(model, 'segV')
         parameterNames = {'sigP','sigV'};
         gridVectors = {sigP,sigV};
+    elseif strcmp(model, 'fixcrit')
+        parameterNames = {'fixCrit','sigP','sigA','sigV'};
+        gridVectors = {fixcrit,sigP,sigA,sigV};    
     else
         parameterNames = {'p_common','sigP','sigA','sigV'};
         gridVectors = {p_common,sigP,sigA,sigV};
@@ -189,6 +203,14 @@ for iSubj = 1:length(subjID)
                 parfor i = 1:size(actParameters,1)
                     [logLike_all(i)] = fitModelFus(actParameters(i,:),actParamNames,actData,responseLoc);
                 end
+            case 'stofus'
+                parfor i = 1:size(actParameters,1)
+                    [logLike_all(i)] = stoFus_fitmodel(actParameters(i,:),actParamNames,actData,responseLoc);
+                end
+            case 'fixcrit'
+                parfor i = 1:size(actParameters,1)
+                    [logLike_all(i)] = fixCrit_fitmodel(actParameters(i,:),actParamNames,actData,responseLoc);
+                end     
         end
         
         % Printing elapsed time
@@ -229,7 +251,10 @@ for iSubj = 1:length(subjID)
         elseif strcmp(model, 'segA') || strcmp(model, 'segV')
             LB = [0.001 0.001];
             UB = [msigP    30];
-        else
+        elseif strcmp(model, 'fixcrit')
+            LB = [0 0.001 0.001 0.001 ];
+            UB = [30 30    30    30    ];     
+        else % bci or stofus
             LB = [0 0.001 0.001 0.001 ];
             UB = [1 msigP    30    30    ];
         end
@@ -240,6 +265,10 @@ for iSubj = 1:length(subjID)
                 fun = @(param) bci_fitmodel(param,actParamNames,actData,responseLoc,readout);
             case 'fus'
                 fun = @(param) fitModelFus(param,actParamNames,actData,responseLoc);
+            case 'stofus'
+                fun = @(param) stoFus_fitmodel(param,actParamNames,actData,responseLoc);
+            case 'fixcrit'
+                fun = @(param) fixCrit_fitmodel(param,actParamNames,actData,responseLoc);    
         end
         
         % Performing fminsearch for each parameter combination
@@ -267,6 +296,14 @@ for iSubj = 1:length(subjID)
                 for i = 1:nmin
                     [fm_10bestLogLike{iCom}(i,1)] = fitModelFus(fm_10bestParameters{iCom}{i,1},actParamNames,actData,responseLoc);
                 end
+            case 'stofus'
+                for i = 1:nmin
+                    [fm_10bestLogLike{iCom}(i,1)] = stoFus_fitmodel(fm_10bestParameters{iCom}{i,1},actParamNames,actData,responseLoc);
+                end
+            case 'fixcrit'
+                for i = 1:nmin
+                    [fm_10bestLogLike{iCom}(i,1)] = fixCrit_fitmodel(fm_10bestParameters{iCom}{i,1},actParamNames,actData,responseLoc);
+                end     
         end
         
         % Find the best parameters combination after fminsearch
@@ -279,6 +316,10 @@ for iSubj = 1:length(subjID)
                 [fm_bestlogLike{iCom},all] = bci_fitmodel(fm_bestParameters{iCom},actParamNames,actData,responseLoc,readout);
             case 'fus'
                 [fm_bestlogLike{iCom},all] = fitModelFus(fm_bestParameters{iCom},actParamNames,actData,responseLoc);
+            case 'stofus'
+                [fm_bestlogLike{iCom},all] = stoFus_fitmodel(fm_bestParameters{iCom},actParamNames,actData,responseLoc);
+            case 'fixcrit'
+                [fm_bestlogLike{iCom},all] = fixCrit_fitmodel(fm_bestParameters{iCom},actParamNames,actData,responseLoc);     
         end        
         temp = repmat({comLevels(iCom)},size(all));
         [all.comAction] = temp{:};

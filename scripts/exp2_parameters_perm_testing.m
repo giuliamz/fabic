@@ -1,5 +1,5 @@
 %% Experiment 2: permutation testing of winning model parameters
-% Model: BCI Separated
+% Model: Fixed Criterion Separated
 
 clear;
 clc;
@@ -19,7 +19,10 @@ subjID = {'70';'71';'72';'73';'75';'76';'77';'78';'79';'80';'81';...
     '102';'103';'104';'106';'107';'111';'112';'113';'114';'115'};
 nsubj=length(subjID);
 
-load(fullfile(dataPath,"params_diff_Com_NCom_exp2.mat"));
+% Model
+model = 'fixCrit'; % bci fixCrit
+
+load(fullfile(dataPath,['params_diff_' model '_Com_NCom_exp2.mat']));
 
 %% Effect of action (Com-NCom)
 
@@ -31,11 +34,17 @@ sigV_mean=mean(sigmaV_diff_Com_NCom_exp2);
 for iSub=1:nperm
     sets{iSub} = [-1 1];
 end
-[a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, z,...
-    a1, b1, c1, d1, e1] = ndgrid(sets{:});
-ToPermute = [a(:), b(:), c(:), d(:), e(:), f(:), g(:), h(:), i(:), j(:), k(:), l(:),...
-    m(:), n(:), o(:), p(:), q(:), r(:), s(:), t(:), u(:), v(:), z(:),...
-    a1(:), b1(:), c1(:), d1(:), e1(:)];
+
+if nperm == 12
+    [a, b, c, d, e, f, g, h, i, j, k, l] = ndgrid(sets{:});
+    ToPermute = [a(:), b(:), c(:), d(:), e(:), f(:), g(:), h(:), i(:), j(:), k(:), l(:)];
+else
+    [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, z,...
+        a1, b1, c1, d1, e1] = ndgrid(sets{:});
+    ToPermute = [a(:), b(:), c(:), d(:), e(:), f(:), g(:), h(:), i(:), j(:), k(:), l(:),...
+        m(:), n(:), o(:), p(:), q(:), r(:), s(:), t(:), u(:), v(:), z(:),...
+        a1(:), b1(:), c1(:), d1(:), e1(:)];
+end
 
 pcommon=pcommon_diff_Com_NCom_exp2(1:nperm);
 sigA=sigmaA_diff_Com_NCom_exp2(1:nperm);
